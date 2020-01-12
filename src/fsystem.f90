@@ -3,8 +3,19 @@
 
 module fSystem
 	use m_strlen, only: strlen
-
+    use, intrinsic :: ISO_C_BINDING
 	implicit none
+		
+			
+	type, bind(c) :: permission
+	    logical(C_BOOL) :: r = .false.
+	    logical(C_BOOL) :: w = .false.
+	    logical(C_BOOL) :: e = .false.
+	end type 
+	
+	type, bind(c) :: permissions
+		type(permission) :: user, group, others
+	end type 
 		
 	contains
 	
