@@ -24,6 +24,7 @@ matrix:
               - gfortran-7
               - gzip
               - cython3
+              - cython
         env:
           - TRAVIS_GFORTRAN="gfortran-7"
       - os: linux
@@ -36,6 +37,7 @@ matrix:
               - gfortran-8
               - gzip
               - cython3
+              - cython
         env:
           - TRAVIS_GFORTRAN="gfortran-8"
       - os: linux
@@ -48,6 +50,7 @@ matrix:
               - gfortran-9
               - gzip
               - cython3
+              - cython
         env:
           - TRAVIS_GFORTRAN="gfortran-9"
 install: 
