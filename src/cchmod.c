@@ -42,3 +42,37 @@ int c_chmod(const char * restrict pathname,  struct permissions * mode){
     
     return 0;
 }
+
+int c_get_mode(const char * restrict pathname,  struct permissions * mode){
+    struct stat statRes;
+    mode_t _mode;
+    
+    if (stat(pathname, &statRes) < 0)
+        return errno;
+        
+    _mode = statRes.st_mode;
+    
+    if (_mode & S_IRUSR)
+		mode->user.r = 1;
+	if(_mode & S_IWUSR)
+		mode->user.w = 1;
+	if(_mode &  S_IXUSR)
+		mode->user.e = 1;
+ 
+    if (_mode & S_IRGRP)
+		mode->group.r = 1;
+	if(_mode & S_IWGRP)
+		mode->group.w = 1;
+	if(_mode &  S_IXGRP)
+		mode->group.e = 1;
+		
+    if (_mode & S_IROTH)
+		mode->others.r = 1;
+	if(_mode & S_IWOTH)
+		mode->others.w = 1;
+	if(_mode &  S_IXOTH)
+		mode->others.e = 1;    
+        
+    return 0;
+}
+

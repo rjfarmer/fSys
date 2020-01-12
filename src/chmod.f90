@@ -17,6 +17,13 @@ module m_chmod
             character(kind=C_CHAR) :: filename(*)
             type(permissions) :: mode
         end function f_chmod
+        
+        function f_get_mode(filename) bind(C,name='c_get_mode')
+            use, intrinsic :: ISO_C_BINDING, only: C_CHAR
+            use fSystem
+            type(permissions) :: f_get_mode
+            character(kind=C_CHAR) :: filename(*)
+        end function f_get_mode
 
     end interface
     
@@ -29,5 +36,12 @@ module m_chmod
       chmod = f_chmod(f_c_string(filename), mode)
 
     end function chmod
+    
+    type(permissions) function get_mode(filename)
+      character(len=*), intent(in) :: filename
+    
+      get_mode = f_get_mode(f_c_string(filename))
+
+    end function get_mode
 
 end module m_chmod

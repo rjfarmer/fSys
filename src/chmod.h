@@ -14,3 +14,4 @@ struct  permissions {
 
 
 int c_chmod(const char * restrict pathname, struct permissions * mode);
+int c_get_mode(const char * restrict pathname,  struct permissions * mode);
