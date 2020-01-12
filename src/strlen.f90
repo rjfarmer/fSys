@@ -12,7 +12,7 @@ module m_strlen
 
         function f_strlen(c_str_ptr) bind(C,name='c_strlen')
             use, intrinsic :: ISO_C_BINDING
-            integer :: f_strlen
+            integer(C_INT) :: f_strlen
             type(C_PTR), target, intent(in)  :: c_str_ptr
         end function f_strlen
 

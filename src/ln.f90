@@ -12,6 +12,7 @@ module m_ln
 
         function f_ln(src, dest, force) bind(C,name='c_ln')
             use, intrinsic :: ISO_C_BINDING
+            integer(C_INT) :: f_ln
             character(kind=C_CHAR) :: src(*), dest(*)
             logical(C_BOOL) :: force
         end function f_ln

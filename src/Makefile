@@ -17,8 +17,8 @@ C_OBJECTS = $(patsubst %.c, %.o, $(C_SOURCES))
 F_OBJECTS = $(patsubst %.f90, %.o, $(F_SOURCES)) 
 F_MODS = $(patsubst %.f90, %.mod, $(F_SOURCES))  
 
-FC_FLAGS = -fPIC -shared
-CC_FLAGS = -fPIC -shared
+FC_FLAGS = -fPIC -shared -std=f2008 -Wall
+CC_FLAGS = -fPIC -shared -Wall
 
 .PHONY: all clean
 

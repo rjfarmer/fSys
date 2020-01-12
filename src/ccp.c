@@ -25,7 +25,7 @@ int c_cp(const char * restrict src, const char * restrict dest){
         return errno;
 
     file_size = fsize(src);
-    if(file_size < 0);
+    if(file_size < 0)
         goto error;
 
     out_fd = creat(dest, O_CREAT | O_WRONLY | O_TRUNC);

@@ -12,11 +12,13 @@ module m_rm
 
         function f_rm_file(filename) bind(C,name='c_rm_file')
             use, intrinsic :: ISO_C_BINDING
+            integer(C_INT) :: f_rm_file
             character(kind=C_CHAR) :: filename(*)
         end function f_rm_file
         
         function f_rm_dir(folder) bind(C,name='c_rm_dir')
             use, intrinsic :: ISO_C_BINDING
+            integer(C_INT) :: f_rm_dir
             character(kind=C_CHAR) :: folder(*)
         end function f_rm_dir
 

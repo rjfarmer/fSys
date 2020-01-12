@@ -12,6 +12,7 @@ module m_cp
 
         function f_cp(src, dest) bind(C,name='c_cp')
             use, intrinsic :: ISO_C_BINDING
+            integer(C_INT) :: f_cp
             character(kind=C_CHAR) :: src(*), dest(*)
         end function f_cp
 
