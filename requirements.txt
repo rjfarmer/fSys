@@ -1,0 +1,6 @@
+# Needed for the test suite not for normal running
+numpy
+cython
+six
+gfort2py
+unittest2

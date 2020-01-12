@@ -20,6 +20,10 @@
 *.gch
 *.pch
 
+# Python
+*.fpy
+*.pyx
+
 # Libraries
 *.lib
 *.a

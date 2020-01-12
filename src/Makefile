@@ -48,7 +48,6 @@ install: $(LIB)
 	cp -f $(LIB) ../lib/$(LIB)
 	cp fshell.mod ../include/fshell.mod	
 	
-
 clean:
 	-@rm -rf *.o *.mod *.a *.so *.smod
 	-@rm -rf ../lib ../include
