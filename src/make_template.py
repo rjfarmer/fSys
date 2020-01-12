@@ -41,7 +41,8 @@ with open(basename+".f90",'w') as f:
 	print(comm_f + copyr,file=f)
 	print(comm_f + spdx,file=f)
 	print("",file=f)
-	print("module m_"+basename,file=f)	
+	print("module m_"+basename,file=f)
+	print("    use fSystem",file=f)
 	print("    implicit none",file=f)
 	print("",file=f)
 	print("    private",file=f)
@@ -60,7 +61,7 @@ with open(basename+".f90",'w') as f:
 	print("",file=f)
 	print("    integer function "+basename+"()",file=f)		
 	print("",file=f)
-	print("    end integer function "+basename,file=f)
+	print("    end function "+basename,file=f)
 	print("",file=f)
 	print("end module m_"+basename,file=f)
 
