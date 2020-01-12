@@ -6,8 +6,8 @@ FC = gfortran
 LIB = libfSys.so
 
 
-C_SOURCES = cmkdir.c cstrlen.c cmv.c cchmod.c crm.c
-F_SOURCES = mkdir.f90 mv.f90 chmod.f90 rm.f90
+C_SOURCES = cmkdir.c cstrlen.c cmv.c cchmod.c crm.c ccp.c
+F_SOURCES = mkdir.f90 mv.f90 chmod.f90 rm.f90 cp.f90
 F_UTILS = strlen.f90 fsystem.f90 
 F_END = fshell.f90
 
