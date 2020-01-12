@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright 2018 - 2018, Robert Farmer
+# Copyright 2018 - 2020, Robert Farmer
 # SPDX-License-Identifier: GPL-2.0-or-later
 
 import sys
@@ -10,7 +10,7 @@ import sys
 
 basename = sys.argv[1]
 
-copyr = "Copyright 2018 - 2018, Robert Farmer"
+copyr = "Copyright 2018 - 2020, Robert Farmer"
 spdx = "SPDX-License-Identifier: GPL-2.0-or-later"
 
 comm_c = '// '
@@ -38,8 +38,8 @@ with open(basename+".h",'w') as f:
 	
 	
 with open(basename+".f90",'w') as f:
-	print(comm_f + copyr_f,file=f)
-	print(comm_f + spdx_f,file=f)
+	print(comm_f + copyr,file=f)
+	print(comm_f + spdx,file=f)
 	print("",file=f)
 	print("module m_"+basename,file=f)	
 	print("    implicit none",file=f)
