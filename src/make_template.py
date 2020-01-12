@@ -24,6 +24,7 @@ with open('c'+basename+".c",'w') as f:
 	print('#include <stdlib.h>',file=f)
 	print('#include <stdio.h>',file=f)
 	print('#include <string.h>',file=f)
+	print('#include <errno.h>',file=f)
 	print('#include "'+basename+'.h"',file=f)
 	print("",file=f)
 	print("int c_"+basename+"(const char * restrict ){",file=f)

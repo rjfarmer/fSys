@@ -5,10 +5,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <errno.h>
 #include "chmod.h"
 
 int c_chmod(const char * restrict pathname,  struct permissions * mode){
     mode_t _mode;
+    int ret;
     
     _mode = 0;
     
@@ -34,5 +36,9 @@ int c_chmod(const char * restrict pathname,  struct permissions * mode){
         _mode ^= S_IXOTH;    
     
     
-    return chmod(pathname, _mode);
+    ret = chmod(pathname, _mode);
+	if ( ret != 0)
+		return errno;
+	
+	return 0;
 }

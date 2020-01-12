@@ -11,15 +11,14 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include "mkdir.h"
-#include "cutils.h"
 
 
 int c_mkdir(const char * restrict path) {
-    if (mkdir(path, S_IRWXU) != SUCCESS) {
+    if (mkdir(path, S_IRWXU) != 0) {
         if (errno != EEXIST)
             return errno; 
     }
-    return SUCCESS;
+    return 0;
 }
 
 
@@ -34,15 +33,16 @@ int c_mkdir_p(char * restrict path) {
             *p = '\0';
 
 			ret = c_mkdir(path);
-            if(ret != SUCCESS)
-                return ret;
+            if(ret != 0)
+                return errno;
 
             *p = '/';
         }
     }   
     ret = c_mkdir(path);
-    if(ret != SUCCESS)
-        return ret;
-
-    return SUCCESS;
+	if ( ret != 0)
+		return errno;
+	
+	return 0;
 }
+
