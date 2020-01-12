@@ -12,6 +12,7 @@ matrix:
               - gfortran-6
               - gzip
               - cython3
+              - cython
         env:
           - TRAVIS_GFORTRAN="gfortran-6"
       - os: linux
@@ -54,6 +55,7 @@ matrix:
         env:
           - TRAVIS_GFORTRAN="gfortran-9"
 install: 
+  - pip install Cython
   - pip3 install -r requirements.txt
   - make install
 script: 
