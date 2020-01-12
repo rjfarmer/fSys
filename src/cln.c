@@ -9,17 +9,17 @@
 #include "ln.h"
 
 int c_ln(const char * restrict src, const char * restrict dest, const _Bool force){
-	int ret;
-	
-	if( force && access( dest, F_OK ) != -1 ) {
-			ret = remove(dest);
-			if ( ret != 0)
-				return errno;
-	}
-	
-	ret = symlink(src, dest);
-	if ( ret != 0)
-		return errno;
-	
-	return 0;
+    int ret;
+    
+    if( force && access( dest, F_OK ) != -1 ) {
+            ret = remove(dest);
+            if ( ret != 0)
+                return errno;
+    }
+    
+    ret = symlink(src, dest);
+    if ( ret != 0)
+        return errno;
+    
+    return 0;
 }

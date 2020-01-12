@@ -32,7 +32,7 @@ int c_mkdir_p(char * restrict path) {
             /* Temporarily truncate */
             *p = '\0';
 
-			ret = c_mkdir(path);
+            ret = c_mkdir(path);
             if(ret != 0)
                 return errno;
 
@@ -40,9 +40,9 @@ int c_mkdir_p(char * restrict path) {
         }
     }   
     ret = c_mkdir(path);
-	if ( ret != 0)
-		return errno;
-	
-	return 0;
+    if ( ret != 0)
+        return errno;
+    
+    return 0;
 }
 

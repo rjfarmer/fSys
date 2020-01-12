@@ -8,11 +8,11 @@
 #include "mv.h"
 
 int c_mv(const char * restrict src, const char * restrict dest ){
-	int ret;
-	
-	ret = rename(src, dest);
-	if ( ret != 0)
-		return errno;
-	
-	return 0;
+    int ret;
+    
+    ret = rename(src, dest);
+    if ( ret != 0)
+        return errno;
+    
+    return 0;
 }

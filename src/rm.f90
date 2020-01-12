@@ -25,16 +25,16 @@ module m_rm
     contains
 
     integer function rm_file(filename)
-		character(len=*), intent(in) :: filename
-		
-		rm_file  = f_rm_file(f_c_string(filename))
+        character(len=*), intent(in) :: filename
+        
+        rm_file  = f_rm_file(f_c_string(filename))
     end function rm_file
     
     
     integer function rm_dir(folder)
-		character(len=*), intent(in) :: folder
-		
-		rm_dir  = f_rm_dir(f_c_string(folder))
+        character(len=*), intent(in) :: folder
+        
+        rm_dir  = f_rm_dir(f_c_string(folder))
     end function rm_dir
 
 end module m_rm

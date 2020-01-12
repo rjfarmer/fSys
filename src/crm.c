@@ -12,32 +12,32 @@
 #include "rm.h"
 
 int c_rm_file(const char * restrict filename){
-	int ret;
-	
-	ret = remove(filename);
-	if ( ret != 0)
-		return errno;
-	
-	return 0;
+    int ret;
+    
+    ret = remove(filename);
+    if ( ret != 0)
+        return errno;
+    
+    return 0;
 }
 
 
 int c_rm_dir(const char * restrict folder){
-	int ret;
-	
-	ret = nftw(folder, unlink_path, 64, FTW_DEPTH | FTW_PHYS);
-	if ( ret != 0)
-		return errno;
-	
-	return 0;	
+    int ret;
+    
+    ret = nftw(folder, unlink_path, 64, FTW_DEPTH | FTW_PHYS);
+    if ( ret != 0)
+        return errno;
+    
+    return 0;    
 }
 
 int  unlink_path(const char * restrict fpath, const struct stat *sb, int typeflag, struct FTW *ftwbuf){
-	int ret;
-	
-	ret = remove(fpath);
-	if ( ret != 0)
-		return errno;
-	
-	return ret;
-}	
+    int ret;
+    
+    ret = remove(fpath);
+    if ( ret != 0)
+        return errno;
+    
+    return ret;
+}    

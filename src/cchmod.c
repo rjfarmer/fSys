@@ -37,8 +37,8 @@ int c_chmod(const char * restrict pathname,  struct permissions * mode){
     
     
     ret = chmod(pathname, _mode);
-	if ( ret != 0)
-		return errno;
-	
-	return 0;
+    if ( ret != 0)
+        return errno;
+    
+    return 0;
 }
