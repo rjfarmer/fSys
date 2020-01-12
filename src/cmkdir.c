@@ -17,7 +17,7 @@
 int c_mkdir(const char * restrict path) {
     if (mkdir(path, S_IRWXU) != SUCCESS) {
         if (errno != EEXIST)
-            return -1; 
+            return errno; 
     }
     return SUCCESS;
 }
@@ -25,6 +25,7 @@ int c_mkdir(const char * restrict path) {
 
 int c_mkdir_p(char * restrict path) {
     char *p; 
+    int ret;
 
     /* Iterate the string */
     for (p = path; *p; p++) {
@@ -32,14 +33,16 @@ int c_mkdir_p(char * restrict path) {
             /* Temporarily truncate */
             *p = '\0';
 
-            if(c_mkdir(path) != SUCCESS)
-                return -1;
+			ret = c_mkdir(path);
+            if(ret != SUCCESS)
+                return ret;
 
             *p = '/';
         }
     }   
-    if(c_mkdir(path) != SUCCESS)
-        return -1;
+    ret = c_mkdir(path);
+    if(ret != SUCCESS)
+        return ret;
 
     return SUCCESS;
 }
