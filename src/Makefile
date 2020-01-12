@@ -16,11 +16,12 @@ F_SOURCES := $(F_UTILS) $(F_SOURCES) $(F_END)
 C_OBJECTS = $(patsubst %.c, %.o, $(C_SOURCES))
 F_OBJECTS = $(patsubst %.f90, %.o, $(F_SOURCES)) 
 F_MODS = $(patsubst %.f90, %.mod, $(F_SOURCES))  
+F_MMODS = $(patsubst %.f90, m_%.mod, $(F_SOURCES))  
 
 FC_FLAGS = -fPIC -shared -std=f2008 -Wall
 CC_FLAGS = -fPIC -shared -Wall
 
-.PHONY: all clean
+.PHONY: all clean install
 
 all: $(LIB)
 	
@@ -38,7 +39,17 @@ all: $(LIB)
 
 $(LIB): $(F_OBJECTS) $(C_OBJECTS)
 	$(FC) $(FFLAGS) $(FC_FLAGS) $(LIB_FLAGS) $(INCLUDE) $(LDFLAGS) $(LIBS) -o $@ $(F_OBJECTS) $(C_OBJECTS)
+	
+MKDIR_P = mkdir -p
+	
+install: $(LIB)
+	${MKDIR_P} ../lib
+	${MKDIR_P} ../include
+	cp -f $(LIB) ../lib/$(LIB)
+	cp fshell.mod ../include/fshell.mod	
+	
 
 clean:
 	-@rm -rf *.o *.mod *.a *.so *.smod
+	-@rm -rf ../lib ../include
 

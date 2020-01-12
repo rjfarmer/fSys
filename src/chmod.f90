@@ -6,7 +6,7 @@ module m_chmod
     implicit none
 
     private
-    public :: chmod
+    public :: chmod, get_mode
 
     interface
 
