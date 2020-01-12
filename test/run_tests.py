@@ -97,7 +97,7 @@ class TestLn(unittest.TestCase):
 		os.remove(file_src)
 		os.remove(file_dest)
 		
-	def test_ln_exists(self):
+	def test_ln_exists_force(self):
 		src_handle, file_src = tempfile.mkstemp()
 		_, file_dest = tempfile.mkstemp()
 		
@@ -109,7 +109,7 @@ class TestLn(unittest.TestCase):
 		
 		self.assertEqual(os.path.isfile(file_src), True)
 		self.assertEqual(os.path.islink(file_dest), True)
-		self.assertEqual(file_src == os.readlink(file_dest), False)
+		self.assertEqual(file_src == os.readlink(file_dest), True)
 		
 		os.remove(file_src)
 		os.remove(file_dest)
@@ -121,7 +121,7 @@ class TestLn(unittest.TestCase):
 		with open(file_src,'w') as f:
 			for i in range(100):
 				print(str(random.randint(1, 100)),file=f)
-				
+		
 		x.ln(file_src, file_dest, False)
 		
 		self.assertEqual(os.path.isfile(file_src),True)

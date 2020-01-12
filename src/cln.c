@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include "ln.h"
 
-int c_ln(const char * restrict src, const char * restrict dest, int force){
+int c_ln(const char * restrict src, const char * restrict dest, const int force){
     int ret;
     
     if( force==1 && access( dest, F_OK ) != -1 ) {

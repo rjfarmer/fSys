@@ -3,6 +3,7 @@
 
 module m_ln
     use fSystem
+    use, intrinsic :: ISO_C_BINDING
     implicit none
 
     private
@@ -12,7 +13,8 @@ module m_ln
 
         function f_ln(src, dest, force) bind(C,name='c_ln')
             use, intrinsic :: ISO_C_BINDING
-            integer(C_INT) :: f_ln, force
+            integer(C_INT) :: f_ln
+            integer(C_INT), value :: force
             character(kind=C_CHAR) :: src(*), dest(*)
         end function f_ln
 
