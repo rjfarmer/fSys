@@ -8,10 +8,10 @@
 #include <unistd.h>
 #include "ln.h"
 
-int c_ln(const char * restrict src, const char * restrict dest, const _Bool force){
+int c_ln(const char * restrict src, const char * restrict dest, int force){
     int ret;
     
-    if( force && access( dest, F_OK ) != -1 ) {
+    if( force==1 && access( dest, F_OK ) != -1 ) {
             ret = remove(dest);
             if ( ret != 0)
                 return errno;

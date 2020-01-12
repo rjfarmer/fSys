@@ -53,25 +53,25 @@ int c_get_mode(const char * restrict pathname,  struct permissions * mode){
     _mode = statRes.st_mode;
     
     if (_mode & S_IRUSR)
-		mode->user.r = 1;
-	if(_mode & S_IWUSR)
-		mode->user.w = 1;
-	if(_mode &  S_IXUSR)
-		mode->user.e = 1;
+        mode->user.r = 1;
+    if(_mode & S_IWUSR)
+        mode->user.w = 1;
+    if(_mode &  S_IXUSR)
+        mode->user.e = 1;
  
     if (_mode & S_IRGRP)
-		mode->group.r = 1;
-	if(_mode & S_IWGRP)
-		mode->group.w = 1;
-	if(_mode &  S_IXGRP)
-		mode->group.e = 1;
-		
+        mode->group.r = 1;
+    if(_mode & S_IWGRP)
+        mode->group.w = 1;
+    if(_mode &  S_IXGRP)
+        mode->group.e = 1;
+        
     if (_mode & S_IROTH)
-		mode->others.r = 1;
-	if(_mode & S_IWOTH)
-		mode->others.w = 1;
-	if(_mode &  S_IXOTH)
-		mode->others.e = 1;    
+        mode->others.r = 1;
+    if(_mode & S_IWOTH)
+        mode->others.w = 1;
+    if(_mode &  S_IXOTH)
+        mode->others.e = 1;    
         
     return 0;
 }

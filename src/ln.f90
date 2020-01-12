@@ -12,9 +12,8 @@ module m_ln
 
         function f_ln(src, dest, force) bind(C,name='c_ln')
             use, intrinsic :: ISO_C_BINDING
-            integer(C_INT) :: f_ln
+            integer(C_INT) :: f_ln, force
             character(kind=C_CHAR) :: src(*), dest(*)
-            logical(C_BOOL) :: force
         end function f_ln
 
     end interface
@@ -25,7 +24,11 @@ module m_ln
         character(len=*), intent(in) :: src, dest
         logical, intent(in) :: force
         
-        ln = f_ln(f_c_string(src), f_c_string(dest), logical(force,kind=C_BOOL))
+        if(force) then
+            ln = f_ln(f_c_string(src), f_c_string(dest), 1)
+        else
+            ln = f_ln(f_c_string(src), f_c_string(dest), 0)
+        end if
         
     end function ln
 
