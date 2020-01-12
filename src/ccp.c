@@ -28,18 +28,16 @@ int c_cp(const char * restrict src, const char * restrict dest){
     if(file_size < 0)
         goto error;
 
-    out_fd = creat(dest, O_CREAT | O_WRONLY | O_TRUNC);
+    out_fd = creat(dest, S_IRUSR|S_IWUSR);
     if (out_fd < 0)
         goto error;    
 
 
-    ret = sendfile(in_fd, out_fd, offset, file_size);
+    ret = sendfile(out_fd, in_fd, offset, file_size);
     if (ret < 0)
         goto error;
-        
-    if(*offset /= file_size)
-        goto error;
-    
+       
+
     close(in_fd);
     close(out_fd);
     return 0;

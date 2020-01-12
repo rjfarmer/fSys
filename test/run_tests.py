@@ -6,6 +6,8 @@ except ImportError:
 import os
 import subprocess
 import tempfile
+import random
+import filecmp
 
 import gfort2py as gf
 
@@ -53,9 +55,30 @@ class TestMv(unittest.TestCase):
 			os.remove(file_src)
 		except FileNotFoundError:
 			pass
+			
+class TestCp(unittest.TestCase):
+	def test_cp(self):
+		src_handle, file_src = tempfile.mkstemp()
+		_, file_dest = tempfile.mkstemp()
+		os.remove(file_dest)
+		
+		with open(file_src,'w') as f:
+			for i in range(100):
+				print(str(random.randint(1, 100)),file=f)
+		
+		x.cp(file_src, file_dest)
+		
+		self.assertEqual(os.path.isfile(file_dest),True)
+		self.assertEqual(os.path.isfile(file_src),True)
+		self.assertEqual(filecmp.cmp(file_src,file_dest),True)
+		
+		os.remove(file_src)
+		os.remove(file_dest)
+
+			
 
 def suite():
-    test_classes_to_run = [TestSystem, TestMkdir, TestMv]
+    test_classes_to_run = [TestSystem, TestMkdir, TestMv, TestCp]
     loader = unittest.TestLoader()
     suites_list = []
     for test_class in test_classes_to_run:
