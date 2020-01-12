@@ -6,8 +6,8 @@ FC = gfortran
 LIB = libfSys.so
 
 
-C_SOURCES = cmkdir.c cstrlen.c
-F_SOURCES = strlen.f90 fsystem.f90 mkdir.f90 fshell.f90
+C_SOURCES = cmkdir.c cstrlen.c cmv.c
+F_SOURCES = strlen.f90 fsystem.f90 mkdir.f90 mv.f90 fshell.f90
 C_OBJECTS = $(patsubst %.c, %.o, $(C_SOURCES))
 F_OBJECTS = $(patsubst %.f90, %.o, $(F_SOURCES)) 
 F_MODS = $(patsubst %.f90, %.mod, $(F_SOURCES))  
