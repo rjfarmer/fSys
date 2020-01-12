@@ -3,6 +3,10 @@
 CC = gcc
 FC = gfortran
 
+ifdef TRAVIS
+	FC = $(TRAVIS_GFORTRAN)
+endif
+
 LIB = libfSys.so
 
 
