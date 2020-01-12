@@ -35,9 +35,23 @@ class TestMkdir(unittest.TestCase):
 		x.mkdir_p(folder)
 		self.assertEqual(os.path.isdir(folder),True)
 		#os.rmdir(folder)
+		
+class TestMv(unittest.TestCase):
+	def test_mv_same_folder(self):
+		_, file_src = tempfile.mkstemp()
+		_, file_dest = tempfile.mkstemp()
+		os.remove(file_dest)
+		x.mv(file_src, file_dest)
+		self.assertEqual(os.path.isfile(file_dest),True)
+		self.assertEqual(os.path.isfile(file_src),False)
+		os.remove(file_dest)
+		try:
+			os.remove(file_src)
+		except FileNotFoundError:
+			pass
 
 def suite():
-    test_classes_to_run = [TestSystem, TestMkdir]
+    test_classes_to_run = [TestSystem, TestMkdir, TestMv]
     loader = unittest.TestLoader()
     suites_list = []
     for test_class in test_classes_to_run:
