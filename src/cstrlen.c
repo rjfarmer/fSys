@@ -7,5 +7,5 @@
 #include "strlen.h"
 
 int c_strlen(const char * restrict c_str){
-	return strlen(c_str);
+    return strlen(c_str);
 }

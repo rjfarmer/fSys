@@ -13,7 +13,7 @@ module m_chmod
         function f_chmod(filename, mode) bind(C,name='c_chmod')
             use, intrinsic :: ISO_C_BINDING, only: C_CHAR
             use fSystem
-	        character(kind=C_CHAR) :: filename(*)
+            character(kind=C_CHAR) :: filename(*)
             type(permissions) :: mode
         end function f_chmod
 
@@ -22,10 +22,10 @@ module m_chmod
     contains
 
     integer function chmod(filename, mode)
-	  character(len=*), intent(in) :: filename
+      character(len=*), intent(in) :: filename
       type(permissions), intent(in) :: mode
-	
-	  chmod = f_chmod(f_c_string(filename), mode)
+    
+      chmod = f_chmod(f_c_string(filename), mode)
 
     end function chmod
 

@@ -12,8 +12,8 @@ module m_strlen
 
         function f_strlen(c_str_ptr) bind(C,name='c_strlen')
             use, intrinsic :: ISO_C_BINDING
-			integer :: f_strlen
-			type(C_PTR), target, intent(in)  :: c_str_ptr
+            integer :: f_strlen
+            type(C_PTR), target, intent(in)  :: c_str_ptr
         end function f_strlen
 
     end interface
@@ -21,9 +21,9 @@ module m_strlen
     contains
 
     integer function strlen(c_str_ptr)
-		type(C_PTR), target, intent(in)  :: c_str_ptr
+        type(C_PTR), target, intent(in)  :: c_str_ptr
 
-		strlen = f_strlen(c_str_ptr)
+        strlen = f_strlen(c_str_ptr)
     end function strlen
 
 end module m_strlen

@@ -5,11 +5,11 @@
 #include <sys/stat.h>
 
 struct permission{
-	_Bool r, w, e;
+    _Bool r, w, e;
 } permission;
 
 struct  permissions {
-	struct permission user,  group, others;
+    struct permission user,  group, others;
 };
 
 
