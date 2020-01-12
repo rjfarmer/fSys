@@ -1,6 +1,3 @@
 # Needed for the test suite not for normal running
-numpy
-Cython
-six
 gfort2py
-unittest2
+unittest
