@@ -1,4 +1,8 @@
-import unittest
+try:
+	import unittest as unittest
+except ImportError:
+	import unittest2 as unittest
+	
 import os
 import subprocess
 import tempfile
