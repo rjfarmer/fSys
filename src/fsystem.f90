@@ -47,10 +47,15 @@ module fSystem
         call c_f_pointer(c_str_ptr, tmp, [n])
         
         do i = 1, n
-            if (tmp(i) == C_NULL_CHAR) exit
+            if (tmp(i) == C_NULL_CHAR) then
+                deallocate(tmp)
+                exit
+            end if
         end do
     
         f_str = transfer(tmp(1:i-1), f_str)
+        
+        deallocate(tmp)
 
     end subroutine c_f_string
 
